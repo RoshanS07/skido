@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import '40%_page.dart';
+import '25%_page2.dart';
 
 class TwentyFivePercent extends StatelessWidget {
   @override
@@ -64,7 +64,7 @@ class TwentyFivePercent extends StatelessWidget {
                       alignment: Alignment.centerRight,
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.0),
+                      padding: EdgeInsets.symmetric(horizontal: 15.0),
                       child: Row(
                         children: [
                           Expanded(
@@ -157,7 +157,7 @@ class _DelayedButtonState extends State<DelayedButton> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => FortyPercent(),
+                  builder: (context) => TwentyFivePercentTwo(),
                 ),
               );
             }

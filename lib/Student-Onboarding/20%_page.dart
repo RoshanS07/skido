@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '10%_page.dart';
+import '25%_page.dart';
 
-class FivePercent extends StatelessWidget {
+class TwentyPercent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,14 +25,7 @@ class MyForm extends StatefulWidget {
 
 class _MyFormState extends State<MyForm> {
   TextEditingController _controller = TextEditingController();
-  bool isTextEntered = false;
-  double progressValue = 0.05; // Progress bar value
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+  String inputName = '';
 
   @override
   Widget build(BuildContext context) {
@@ -45,51 +38,115 @@ class _MyFormState extends State<MyForm> {
               height: MediaQuery.of(context).size.height * 0.11,
             ),
             Container(
-              height: MediaQuery.of(context).size.height * 0.2,
+              height: MediaQuery.of(context).size.height * 0.22,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
+                    padding: EdgeInsets.only(left: 16),
                     child: Text(
-                      'Hi! I am Skido, \nMay I know your name?',
+                      'Got It!\nPlease verify your OTP',
                       style: TextStyle(
-                        color: Colors.white,
+                        fontSize: 20,
                         fontWeight: FontWeight.w600,
-                        fontFamily: 'Inter',
-                        fontSize: 20.0,
+                        color: Colors.white,
                       ),
                     ),
                   ),
                   SizedBox(height: 20.0),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 18.0),
-                    child: RectangleWidget(
-                      child: TextField(
-                        controller: _controller,
-                        onChanged: (value) {
-                          setState(() {
-                            isTextEntered = value.isNotEmpty;
-                          });
-                        },
-                        decoration: InputDecoration(
-                            hintStyle: TextStyle(color: Colors.white),
-                            contentPadding:
-                                EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-                            border: InputBorder.none),
-                        style: TextStyle(color: Colors.white),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: List.generate(
+                      6,
+                      (index) => Container(
+                        width: 54,
+                        height: 54,
+                        margin: EdgeInsets.only(left: 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Color(0xFF492b65),
+                              Color(0xFF240046),
+                            ],
+                          ),
+                          border: Border.all(
+                            color:
+                                Color(0xFFC0C0C0), // Set border color to white
+                            width: 1,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(
+                                  0x80000000), // Vintage shade color with 50% opacity
+                              spreadRadius: 2,
+                              blurRadius: 4,
+                              offset: Offset(0, 2), // Shadow position
+                            ),
+                          ],
+                        ),
+                        child: Center(
+                          child: TextField(
+                            keyboardType: TextInputType.number,
+                            maxLength: 1,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                            ),
+                            decoration: InputDecoration(
+                              counterText: '',
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
                       ),
+                    ),
+                  ),
+                  SizedBox(height: 15),
+                  Padding(
+                    padding: EdgeInsets.only(left: 15),
+                    child: Row(
+                      children: [
+                        Text(
+                          'Didn’t receive the OTP? ',
+                          style: TextStyle(
+                            fontFamily: 'Inter',
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            color: Color(0xFFC8C7C7),
+                          ),
+                        ),
+                        SizedBox(width: 100), // Adding space between the texts
+                        Text(
+                          'Resend OTP',
+                          style: TextStyle(
+                            fontFamily: 'Inter',
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
-            Expanded(
-              flex: 5, // Image flex
-              child: Container(
-                child: Image.asset(
-                  'images/image.png',
-                  alignment: Alignment.centerLeft,
+            SizedBox(height: 20),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Join vibrant learning communities, actively engage, and collaborate with mentors to gain valuable experience and expertise.',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.0,
+                  ),
                 ),
               ),
             ),
@@ -116,7 +173,7 @@ class _MyFormState extends State<MyForm> {
                               ),
                               FractionallySizedBox(
                                 alignment: Alignment.centerLeft,
-                                widthFactor: 0.05,
+                                widthFactor: 0.20,
                                 child: Container(
                                   height: 5,
                                   decoration: BoxDecoration(
@@ -132,8 +189,7 @@ class _MyFormState extends State<MyForm> {
                         Expanded(
                           flex: 1,
                           child: Text(
-                            (0.05 * 100).toStringAsFixed(0).padLeft(2, '0') +
-                                '%',
+                            '20%',
                             style: TextStyle(
                               color: Colors.white,
                             ),
@@ -153,15 +209,14 @@ class _MyFormState extends State<MyForm> {
                             child: Padding(
                               padding: EdgeInsets.symmetric(horizontal: 13.0),
                               child: ElevatedButton(
-                                onPressed: isTextEntered
-                                    ? () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (content) =>
-                                                    TenPercent()));
-                                      }
-                                    : null,
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (content) => TwentyFivePercent(),
+                                    ),
+                                  );
+                                },
                                 style: ButtonStyle(
                                   backgroundColor:
                                       MaterialStateProperty.resolveWith<Color>(
@@ -212,7 +267,7 @@ class _MyFormState extends State<MyForm> {
                                 'Login',
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 18,
+                                  fontSize: 20,
                                 ),
                               ),
                             )
@@ -224,7 +279,7 @@ class _MyFormState extends State<MyForm> {
                 ],
               ),
             ),
-            SizedBox(height: 30)
+            SizedBox(height: 25.0)
           ],
         ),
         Positioned(
@@ -232,49 +287,11 @@ class _MyFormState extends State<MyForm> {
           left: 10,
           child: Image.asset(
             'images/SKIDO Logo transparant 1-1.png',
-            width: 100,
-            height: 50,
+            width: 81,
+            height: 35,
           ),
         ),
       ],
-    );
-  }
-}
-
-class RectangleWidget extends StatelessWidget {
-  final Widget child;
-
-  const RectangleWidget({Key? key, required this.child}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 358,
-      height: 54,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            Color(0xFF492b65),
-            Color(0xFF240046),
-          ],
-        ),
-        border: Border.all(
-          color: Color(0xFFC0C0C0), // White outline color
-          width: 1, // Width of the outline
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Color(0x80000000), // Vintage shade color with 50% opacity
-            spreadRadius: 2,
-            blurRadius: 4,
-            offset: Offset(0, 2), // Shadow position
-          ),
-        ],
-      ),
-      child: child,
     );
   }
 }

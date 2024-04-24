@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '25%_page.dart';
+import '15%_page.dart';
 
 class TenPercent extends StatelessWidget {
   @override
@@ -91,7 +91,7 @@ class _MyFormState extends State<MyForm> {
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              'Hi, $inputName! Excited to have you with us. SKIDO\'s got your back for skill development & linking you up with top mentors to ace your learning journey.',
+              'Hi, Rohan! Excited to have you with us. SKIDO\'s got your back for skill development & linking you up with top mentors to ace your learning journey.',
               textAlign: TextAlign.left,
               style: TextStyle(
                 color: Colors.white,
@@ -163,7 +163,7 @@ class _MyFormState extends State<MyForm> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (content) => TwentyFivePercent(),
+                                  builder: (content) => FifteenPercent(),
                                 ),
                               );
                             },
@@ -216,7 +216,7 @@ class _MyFormState extends State<MyForm> {
                             'Login',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 18,
+                              fontSize: 20,
                             ),
                           ),
                         )

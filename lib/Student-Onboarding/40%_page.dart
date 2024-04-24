@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'profile_picture.dart';
+import '45%_page.dart';
 
 class FortyPercent extends StatelessWidget {
   @override
@@ -192,7 +192,7 @@ class FortyPercent extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => ProfilePicture(),
+                                    builder: (context) => FortyFivePercent(),
                                   ),
                                 );
                               },

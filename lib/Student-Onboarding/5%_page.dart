@@ -1,0 +1,274 @@
+import 'package:flutter/material.dart';
+import '10%_page.dart';
+
+class FivePercent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: Color(0xFF240046),
+        body: SafeArea(
+          child: Center(
+            child: MyForm(),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class MyForm extends StatefulWidget {
+  @override
+  _MyFormState createState() => _MyFormState();
+}
+
+class _MyFormState extends State<MyForm> {
+  TextEditingController _controller = TextEditingController();
+  bool isTextEntered = false;
+  double progressValue = 0.05; // Progress bar value
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height * 0.11,
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.2,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20.0),
+                    child: Text(
+                      'Hi! I am Skido, \nMay I know your name?',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Inter',
+                        fontSize: 20.0,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20.0),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 18.0),
+                    child: RectangleWidget(
+                      child: TextField(
+                        controller: _controller,
+                        onChanged: (value) {
+                          setState(() {
+                            isTextEntered = value.isNotEmpty;
+                          });
+                        },
+                        decoration: InputDecoration(
+                            hintStyle: TextStyle(color: Colors.white),
+                            contentPadding:
+                                EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+                            border: InputBorder.none),
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 5, // Image flex
+              child: Container(
+                child: Image.asset(
+                  'images/image.png',
+                  alignment: Alignment.centerLeft,
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 3, // Second column flex
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          flex: 11,
+                          child: Stack(
+                            alignment: Alignment.centerLeft,
+                            children: [
+                              Container(
+                                height: 5,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: Colors.white,
+                                ),
+                              ),
+                              FractionallySizedBox(
+                                alignment: Alignment.centerLeft,
+                                widthFactor: 0.05,
+                                child: Container(
+                                  height: 5,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Color(0xFFF5B759),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        Expanded(
+                          flex: 1,
+                          child: Text(
+                            (0.05 * 100).toStringAsFixed(0).padLeft(2, '0') +
+                                '%',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 13.0),
+                              child: ElevatedButton(
+                                onPressed: isTextEntered
+                                    ? () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (content) =>
+                                                    TenPercent()));
+                                      }
+                                    : null,
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Color(0xFF240046)),
+                                  padding: MaterialStateProperty.all<
+                                      EdgeInsetsGeometry>(
+                                    EdgeInsets.symmetric(vertical: 13.0),
+                                  ),
+                                ),
+                                child: Text(
+                                  'Next',
+                                  style: TextStyle(
+                                    fontSize: 18.0,
+                                    color: Color(0xFF240046),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 25.0),
+                      Center(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Already have an account?',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                              ),
+                            ),
+                            SizedBox(
+                                height:
+                                    5), // Adds some vertical space between the text elements
+                            GestureDetector(
+                              onTap: () {
+                                // Add your onTap logic here
+                              },
+                              child: Text(
+                                'Login',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 30)
+          ],
+        ),
+        Positioned(
+          top: 10,
+          left: 10,
+          child: Image.asset(
+            'images/SKIDO Logo transparant 1-1.png',
+            width: 100,
+            height: 50,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class RectangleWidget extends StatelessWidget {
+  final Widget child;
+
+  const RectangleWidget({Key? key, required this.child}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 358,
+      height: 54,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color(0xFF492b65),
+            Color(0xFF240046),
+          ],
+        ),
+        border: Border.all(
+          color: Color(0xFFC0C0C0), // White outline color
+          width: 1, // Width of the outline
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Color(0x80000000), // Vintage shade color with 50% opacity
+            spreadRadius: 2,
+            blurRadius: 4,
+            offset: Offset(0, 2), // Shadow position
+          ),
+        ],
+      ),
+      child: child,
+    );
+  }
+}
