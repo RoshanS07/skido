@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
-import 'my_profile.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:skido/Student-Profile/my_profile.dart';
 
 class RectangleWidget extends StatelessWidget {
   final Widget child;
@@ -46,7 +48,26 @@ class RectangleWidget extends StatelessWidget {
   }
 }
 
-class EditProfile extends StatelessWidget {
+class EditProfile extends StatefulWidget {
+  @override
+  _EditProfileState createState() => _EditProfileState();
+}
+
+class _EditProfileState extends State<EditProfile> {
+  String selectedGender = '';
+  String imagePath = ''; // Store the selected image path
+
+  Future<void> getImage() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      setState(() {
+        imagePath = pickedFile.path;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -61,7 +82,6 @@ class EditProfile extends StatelessWidget {
                 context,
                 MaterialPageRoute(builder: (context) => MyProfile()),
               );
-              // Navigate back or perform any desired action
             },
           ),
           title: Text(
@@ -85,16 +105,17 @@ class EditProfile extends StatelessWidget {
                     children: [
                       CircleAvatar(
                         radius: 60,
-                        backgroundImage: AssetImage(
-                            'assets/p.png'), // Add your image asset here
+                        backgroundImage: imagePath.isNotEmpty
+                            ? Image.file(File(imagePath)).image
+                            : AssetImage('images/p.png'),
                       ),
                       Positioned(
                         bottom: 0,
                         right: 0,
                         child: IconButton(
-                          icon: Icon(Icons.edit_square),
+                          icon: Icon(Icons.edit),
                           onPressed: () {
-                            /* Handle edit action */
+                            getImage(); // Open gallery when clicked
                           },
                           color: Colors.white,
                         ),
@@ -106,12 +127,14 @@ class EditProfile extends StatelessWidget {
                 Text(
                   'Name',
                   style: TextStyle(
-                      color: Colors.white, fontSize: 18), // Adjusted font size
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
                 ),
                 SizedBox(height: 2),
                 RectangleWidget(
-                  width: 379, // Set width for the box
-                  height: 54, // Set height for the box
+                  width: 379,
+                  height: 54,
                   child: TextField(
                     decoration: InputDecoration(
                       filled: true,
@@ -127,12 +150,14 @@ class EditProfile extends StatelessWidget {
                 Text(
                   'Email Id',
                   style: TextStyle(
-                      color: Colors.white, fontSize: 18), // Adjusted font size
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
                 ),
                 SizedBox(height: 5),
                 RectangleWidget(
-                  width: 379, // Set width for the box
-                  height: 54, // Set height for the box
+                  width: 379,
+                  height: 54,
                   child: TextField(
                     decoration: InputDecoration(
                       filled: true,
@@ -148,13 +173,17 @@ class EditProfile extends StatelessWidget {
                 Text(
                   'Phone Number',
                   style: TextStyle(
-                      color: Colors.white, fontSize: 18), // Adjusted font size
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
                 ),
                 SizedBox(height: 5),
                 RectangleWidget(
-                  width: 379, // Set width for the box
-                  height: 54, // Set height for the box
+                  width: 379,
+                  height: 54,
                   child: TextField(
+                    keyboardType:
+                        TextInputType.phone, // Set keyboard type to phone
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.transparent,
@@ -167,148 +196,72 @@ class EditProfile extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 Text(
-                  'Date of Birth', // Add "Date of Birth" text
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18), // Set the desired style
-                ),
-                SizedBox(height: 20.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: Column(
-                        children: [
-                          RectangleWidget(
-                            width: 110, // Set width for the box
-                            height: 54, // Set height for the box
-                            child: TextField(
-                              keyboardType: TextInputType.number,
-                              style: TextStyle(color: Colors.white),
-                              decoration: InputDecoration(
-                                labelStyle: TextStyle(color: Colors.white),
-                                border: InputBorder.none,
-                                contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 42.0,
-                                  vertical: 15.0,
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 10.0),
-                          Text(
-                            'Day',
-                            style: TextStyle(color: Colors.white, fontSize: 18),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(width: 10.0),
-                    Expanded(
-                      child: Column(
-                        children: [
-                          RectangleWidget(
-                            width: 110, // Set width for the box
-                            height: 54, // Set height for the box
-                            child: TextField(
-                              keyboardType: TextInputType.number,
-                              style: TextStyle(color: Colors.white),
-                              decoration: InputDecoration(
-                                labelStyle: TextStyle(color: Colors.white),
-                                border: InputBorder.none,
-                                contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 45.0,
-                                  vertical: 15.0,
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 10.0),
-                          Text(
-                            'Month',
-                            style: TextStyle(color: Colors.white, fontSize: 18),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(width: 10.0),
-                    Expanded(
-                      child: Column(
-                        children: [
-                          RectangleWidget(
-                            width: 110, // Set width for the box
-                            height: 54, // Set height for the box
-                            child: TextField(
-                              keyboardType: TextInputType.number,
-                              style: TextStyle(color: Colors.white),
-                              decoration: InputDecoration(
-                                labelStyle: TextStyle(color: Colors.white),
-                                border: InputBorder.none,
-                                contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 35.0,
-                                  vertical: 15.0,
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 10.0),
-                          Text(
-                            'Year',
-                            style: TextStyle(color: Colors.white, fontSize: 18),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 10),
-                Text(
                   'Gender',
                   style: TextStyle(
-                      color: Colors.white, fontSize: 18), // Adjusted font size
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
                 ),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Row(
                     children: [
                       RectangleWidget(
-                        width: 110, // Set width for the buttons
-                        height: 54, // Set height for the buttons
+                        width: 110,
+                        height: 54,
                         child: TextButton(
                           onPressed: () {
-                            /* Handle male selection */
+                            setState(() {
+                              selectedGender = 'Male';
+                            });
                           },
                           child: Text(
                             'Male',
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(
+                              color: selectedGender == 'Male'
+                                  ? Colors.white
+                                  : Colors.grey,
+                            ),
                           ),
                         ),
                       ),
                       SizedBox(width: 10),
                       RectangleWidget(
-                        width: 110, // Set width for the buttons
-                        height: 54, // Set height for the buttons
+                        width: 110,
+                        height: 54,
                         child: TextButton(
                           onPressed: () {
-                            /* Handle female selection */
+                            setState(() {
+                              selectedGender = 'Female';
+                            });
                           },
                           child: Text(
                             'Female',
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(
+                              color: selectedGender == 'Female'
+                                  ? Colors.white
+                                  : Colors.grey,
+                            ),
                           ),
                         ),
                       ),
                       SizedBox(width: 10),
                       RectangleWidget(
-                        width: 110, // Set width for the buttons
-                        height: 54, // Set height for the buttons
+                        width: 110,
+                        height: 54,
                         child: TextButton(
                           onPressed: () {
-                            /* Handle other selection */
+                            setState(() {
+                              selectedGender = 'Other';
+                            });
                           },
                           child: Text(
                             'Other',
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(
+                              color: selectedGender == 'Other'
+                                  ? Colors.white
+                                  : Colors.grey,
+                            ),
                           ),
                         ),
                       ),
@@ -319,13 +272,16 @@ class EditProfile extends StatelessWidget {
                 Text(
                   'Aadhar Card Number',
                   style: TextStyle(
-                      color: Colors.white, fontSize: 18), // Adjusted font size
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
                 ),
                 SizedBox(height: 5),
                 RectangleWidget(
-                  width: 379, // Set width for the box
-                  height: 54, // Set height for the box
+                  width: 379,
+                  height: 54,
                   child: TextField(
+                    keyboardType: TextInputType.phone,
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.transparent,
@@ -340,12 +296,14 @@ class EditProfile extends StatelessWidget {
                 Text(
                   'College / School Name',
                   style: TextStyle(
-                      color: Colors.white, fontSize: 18), // Adjusted font size
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
                 ),
                 SizedBox(height: 5),
                 RectangleWidget(
-                  width: 379, // Set width for the box
-                  height: 54, // Set height for the box
+                  width: 379,
+                  height: 54,
                   child: TextField(
                     decoration: InputDecoration(
                       filled: true,
@@ -361,12 +319,14 @@ class EditProfile extends StatelessWidget {
                 Text(
                   'City',
                   style: TextStyle(
-                      color: Colors.white, fontSize: 18), // Adjusted font size
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
                 ),
                 SizedBox(height: 5),
                 RectangleWidget(
-                  width: 379, // Set width for the box
-                  height: 54, // Set height for the box
+                  width: 379,
+                  height: 54,
                   child: TextField(
                     decoration: InputDecoration(
                       filled: true,
@@ -381,24 +341,24 @@ class EditProfile extends StatelessWidget {
                 SizedBox(height: 20),
                 SizedBox(
                   width: 370,
-                  height: 45,
+                  height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                      /* Handle submit action */
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MyProfile()),
+                      );
                     },
                     child: Text(
                       'Submit',
-                      style:
-                          TextStyle(fontSize: 18), // Set the desired font size
+                      style: TextStyle(fontSize: 18),
                     ),
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                            25), // Set button border radius
+                        borderRadius: BorderRadius.circular(25),
                       ),
-                      shadowColor: Color(
-                          0x80000000), // Vintage shade color with 50% opacity
-                      elevation: 4, // Set elevation for the button
+                      shadowColor: Color(0x80000000),
+                      elevation: 4,
                     ),
                   ),
                 ),

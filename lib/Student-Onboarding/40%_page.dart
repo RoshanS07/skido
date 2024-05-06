@@ -9,6 +9,44 @@ class FortyPercent extends StatelessWidget {
         resizeToAvoidBottomInset: false,
         backgroundColor: Color(0xFF240046),
         body: SafeArea(
+          child: Center(
+            child: YourWidget(),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class YourWidget extends StatefulWidget {
+  @override
+  _YourWidgetState createState() => _YourWidgetState();
+}
+
+class _YourWidgetState extends State<YourWidget> {
+  TextEditingController _controller = TextEditingController();
+
+  bool isTextEntered = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.addListener(_textFieldListener);
+  }
+
+  void _textFieldListener() {
+    setState(() {
+      isTextEntered = _controller.text.isNotEmpty;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: Color(0xFF240046),
+        body: SafeArea(
           child: Stack(
             children: [
               Positioned(
@@ -48,6 +86,13 @@ class FortyPercent extends StatelessWidget {
                                 padding: EdgeInsets.symmetric(horizontal: 10.0),
                                 child: RectangleWidget(
                                   child: TextField(
+                                    controller:
+                                        _controller, // Add controller for the first text field
+                                    onChanged: (value) {
+                                      setState(() {
+                                        isTextEntered = value.isNotEmpty;
+                                      });
+                                    },
                                     keyboardType: TextInputType.number,
                                     style: TextStyle(color: Colors.white),
                                     decoration: InputDecoration(
@@ -77,6 +122,13 @@ class FortyPercent extends StatelessWidget {
                                 padding: EdgeInsets.symmetric(horizontal: 10.0),
                                 child: RectangleWidget(
                                   child: TextField(
+                                    controller:
+                                        _controller, // Add controller for the second text field
+                                    onChanged: (value) {
+                                      setState(() {
+                                        isTextEntered = value.isNotEmpty;
+                                      });
+                                    },
                                     keyboardType: TextInputType.number,
                                     style: TextStyle(color: Colors.white),
                                     decoration: InputDecoration(
@@ -106,6 +158,13 @@ class FortyPercent extends StatelessWidget {
                                 padding: EdgeInsets.symmetric(horizontal: 10.0),
                                 child: RectangleWidget(
                                   child: TextField(
+                                    controller:
+                                        _controller, // Add controller for the third text field
+                                    onChanged: (value) {
+                                      setState(() {
+                                        isTextEntered = value.isNotEmpty;
+                                      });
+                                    },
                                     keyboardType: TextInputType.number,
                                     style: TextStyle(color: Colors.white),
                                     decoration: InputDecoration(

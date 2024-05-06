@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skido/Student-Wallet/add_money.dart';
 import 'package:skido/Student-Wallet/debit_card.dart';
 import 'package:skido/Student-Wallet/upi.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -144,7 +145,10 @@ class _MyAppState extends State<PaymentOptions> {
               size: 26,
             ),
             onPressed: () {
-              // Implement back button functionality here
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AddMoney()),
+              );
             },
           ),
         ),

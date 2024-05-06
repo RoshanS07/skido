@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skido/Student-Wallet/payment_options.dart';
 import 'package:skido/Student-Wallet/skido_wallet.dart';
 
 class Confirmation extends StatefulWidget {
@@ -32,7 +33,10 @@ class _MyAppState extends State<Confirmation> {
               size: 26,
             ),
             onPressed: () {
-              // Implement back button functionality here
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => PaymentOptions()),
+              );
             },
           ),
         ),

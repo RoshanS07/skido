@@ -25,7 +25,12 @@ class ThirtyFivePercent extends StatelessWidget {
               right: 7,
               child: TextButton(
                 onPressed: () {
-                  // Handle skip button pressed
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FortyPercent(),
+                    ),
+                  );
                 },
                 child: Text(
                   'Skip',

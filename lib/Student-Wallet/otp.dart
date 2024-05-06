@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:ui';
 import 'package:skido/Student-Wallet/confirmation.dart';
+import 'package:skido/Student-Wallet/payment_options.dart';
 
 class OTP extends StatelessWidget {
   @override
@@ -44,7 +45,10 @@ class _WalletRechargePageState extends State<WalletRechargePage> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
-            // Remove navigation to the next page
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => PaymentOptions()),
+            );
           },
         ),
         title: Text(

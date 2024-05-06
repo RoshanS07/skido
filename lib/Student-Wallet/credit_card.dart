@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:skido/Student-Wallet/otp.dart'; // Import the services.dart package
+import 'package:skido/Student-Wallet/otp.dart';
+import 'package:skido/Student-Wallet/payment_options.dart'; // Import the services.dart package
 
 class CreditCard extends StatefulWidget {
   @override
@@ -36,7 +37,11 @@ class _CreditCardState extends State<CreditCard> {
                       IconButton(
                         icon: Icon(Icons.arrow_back),
                         onPressed: () {
-                          Navigator.pop(context);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PaymentOptions()),
+                          );
                         },
                         color: Colors.white,
                       ),

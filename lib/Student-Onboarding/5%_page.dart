@@ -164,8 +164,15 @@ class _MyFormState extends State<MyForm> {
                                     : null,
                                 style: ButtonStyle(
                                   backgroundColor:
-                                      MaterialStateProperty.all<Color>(
-                                          Color(0xFF240046)),
+                                      MaterialStateProperty.resolveWith<Color>(
+                                    (Set<MaterialState> states) {
+                                      if (states
+                                          .contains(MaterialState.disabled)) {
+                                        return Colors.white.withOpacity(0.5);
+                                      }
+                                      return Colors.white;
+                                    },
+                                  ),
                                   padding: MaterialStateProperty.all<
                                       EdgeInsetsGeometry>(
                                     EdgeInsets.symmetric(vertical: 13.0),

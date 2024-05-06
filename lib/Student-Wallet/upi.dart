@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:skido/Student-Wallet/confirmation.dart';
+import 'package:skido/Student-Wallet/payment_options.dart';
 import 'package:url_launcher/url_launcher.dart'; // Import url_launcher package
 import 'package:flutter/services.dart';
 import 'dart:async';
@@ -166,7 +167,10 @@ class _MyAppState extends State<UPI> {
               size: 26,
             ),
             onPressed: () {
-              // Implement back button functionality here
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => PaymentOptions()),
+              );
             },
           ),
         ),

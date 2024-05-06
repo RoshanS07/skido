@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import '35%_page.dart';
+import 'dart:ui';
 
 class TwentyFivePercentTwo extends StatelessWidget {
   @override
@@ -25,7 +27,12 @@ class TwentyFivePercentTwo extends StatelessWidget {
                     right: 7,
                     child: TextButton(
                       onPressed: () {
-                        // Handle skip button pressed
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ThirtyFivePercent(),
+                          ),
+                        );
                       },
                       child: Text(
                         'Skip',
@@ -98,19 +105,114 @@ class TwentyFivePercentTwo extends StatelessWidget {
                         Container(
                           width: 150, // Set width to match parent width
                           child: ElevatedButton.icon(
-                            onPressed: () {},
-                            icon: Icon(Icons.add),
-                            label: Text(
+                            onPressed: () {
+                              // Show bottom sheet on button press
+                              showModalBottomSheet(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return Stack(
+                                    children: [
+                                      Positioned.fill(
+                                        child: BackdropFilter(
+                                          filter: ImageFilter.blur(
+                                              sigmaX: 5, sigmaY: 5),
+                                          child: Container(
+                                            color:
+                                                Colors.black.withOpacity(0.5),
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(20),
+                                            topRight: Radius.circular(20),
+                                          ),
+                                        ),
+                                        height: 200, // Adjust height as needed
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.stretch,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 8.0, right: 8.0),
+                                              child: ElevatedButton(
+                                                onPressed: () {},
+                                                style: ButtonStyle(
+                                                  backgroundColor:
+                                                      MaterialStateProperty.all<
+                                                              Color>(
+                                                          const Color(
+                                                              0xFF240046)), // Change button color
+                                                  minimumSize: MaterialStateProperty
+                                                      .all<Size>(Size(
+                                                          double.infinity,
+                                                          50)), // Set minimum height
+                                                ),
+                                                child: Text(
+                                                  'Open Camera',
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontFamily: 'Inter',
+                                                      fontSize: 18),
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(height: 10),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 8.0, right: 8.0),
+                                              child: ElevatedButton(
+                                                onPressed: () async {
+                                                  final picker = ImagePicker();
+                                                  final pickedImage =
+                                                      await picker.getImage(
+                                                    source: ImageSource
+                                                        .gallery, // You can change to ImageSource.camera for opening camera
+                                                  );
+                                                },
+                                                style: ButtonStyle(
+                                                  backgroundColor:
+                                                      MaterialStateProperty.all<
+                                                              Color>(
+                                                          const Color(
+                                                              0xFF240046)), // Change button color
+                                                  minimumSize: MaterialStateProperty
+                                                      .all<Size>(Size(
+                                                          double.infinity,
+                                                          50)), // Set minimum height
+                                                ),
+                                                child: Text(
+                                                  'Choose from Gallery',
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontFamily: 'Inter',
+                                                      fontSize: 18),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              minimumSize: Size(double.infinity, 50),
+                            ),
+                            icon: const Icon(Icons.add),
+                            label: const Text(
                               "Add",
                               style: TextStyle(
-                                fontSize: 16.0,
+                                fontSize: 18.0,
                                 color: Color(0xFF240046),
                               ),
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              padding: EdgeInsets.symmetric(
-                                vertical: 13.0,
-                              ), // Adjust padding as needed
                             ),
                           ),
                         ),
@@ -218,38 +320,65 @@ class TwentyFivePercentTwo extends StatelessWidget {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
-        return Container(
-          color: Color(0xFF240046),
-          child: Wrap(
-            children: <Widget>[
-              ListTile(
-                leading: Icon(
-                  Icons.camera_alt,
-                  color: Colors.white,
+        return Stack(
+          children: [
+            Positioned.fill(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                child: Container(
+                  color: Colors.black.withOpacity(0.5),
                 ),
-                title: Text(
-                  'Open Camera',
-                  style: TextStyle(color: Colors.white),
-                ),
-                onTap: () {
-                  // Handle opening camera
-                },
               ),
-              ListTile(
-                leading: Icon(
-                  Icons.image,
-                  color: Colors.white,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
                 ),
-                title: Text(
-                  'Choose from Gallery',
-                  style: TextStyle(color: Colors.white),
-                ),
-                onTap: () {
-                  // Handle choosing from gallery
-                },
               ),
-            ],
-          ),
+              height: 200, // Adjust height as needed
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // Add functionality for opening camera
+                      },
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                            const Color(0xFF240046)), // Change button color
+                      ),
+                      child: Text(
+                        'Open Camera',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // Add functionality for choosing from gallery
+                      },
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                            const Color(0xFF240046)), // Change button color
+                      ),
+                      child: Text(
+                        'Choose from Gallery',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         );
       },
     );

@@ -133,7 +133,7 @@ class _MyPageState extends State<MyPage> {
                                           groupValue: selectedFilter,
                                           onChanged: (value) {
                                             setState(() {
-                                              selectedFilter = value as String?;
+                                              selectedFilter = '30days';
                                             });
                                             // Handle filtering for the last 30 days
                                           },

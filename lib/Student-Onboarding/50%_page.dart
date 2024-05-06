@@ -25,7 +25,12 @@ class _MyAppState extends State<FiftyPercent> {
                 right: 7,
                 child: TextButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SixtyPercent(),
+                      ),
+                    );
                   },
                   child: Text(
                     'Skip',

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skido/Student-Wallet/wallet_history.dart';
 import 'add_money.dart';
+import 'package:flutter/gestures.dart';
 
 class SikdoWallet extends StatelessWidget {
   @override
@@ -194,19 +195,14 @@ class MyBody extends StatelessWidget {
             right: 10,
             left: 10,
             child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => WalletHistory()),
-                );
-              },
+              onTap: () {},
               child: Stack(
                 children: [
                   Image(
                     image: AssetImage(
-                        'images/Rectangle 51.png'), // Replace with your image path
+                        'images/Rectangle 52.png'), // Replace with your image path
                     width: MediaQuery.of(context).size.width,
-                    height: 280,
+                    height: 270,
                   ),
                   Positioned(
                     top: 120, // Adjust the top position as needed
@@ -275,51 +271,69 @@ class MyBody extends StatelessWidget {
             top: 320, // Adjust the top position as needed
             left: 20,
             right: 20,
-            child: Container(
-              height: 45,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(25),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image.asset(
-                      'images/Frame 8.png',
-                      width: 28,
-                      height: 28,
+            child: GestureDetector(
+              onTap: () {
+                // Navigate to the respective page when tapped
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AddMoney()),
+                );
+              },
+              child: Container(
+                height: 45,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Image.asset(
+                        'images/Frame 8.png',
+                        width: 28,
+                        height: 28,
+                      ),
                     ),
-                  ),
-                  SizedBox(width: 5),
-                  RichText(
-                    text: TextSpan(
-                      style: DefaultTextStyle.of(context).style,
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: 'PhonePe',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
+                    SizedBox(width: 5),
+                    RichText(
+                      text: TextSpan(
+                        style: DefaultTextStyle.of(context).style,
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: 'PhonePe',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        TextSpan(
-                          text:
-                              '                                     ', // Add space between texts
-                        ),
-                        TextSpan(
-                          text: 'Link account', // Combine both texts
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey[600],
+                          TextSpan(
+                            text:
+                                '                                     ', // Add space between texts
                           ),
-                        ),
-                      ],
+                          TextSpan(
+                            text: 'Link account', // Combine both texts
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey[600],
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                // Navigate to the respective page
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LinkAccountPage()),
+                                );
+                              },
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
@@ -327,51 +341,69 @@ class MyBody extends StatelessWidget {
             top: 380, // Adjust the top position as needed
             left: 20,
             right: 20,
-            child: Container(
-              height: 45,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(25),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image.asset(
-                      'images/Frame 9.png',
-                      width: 28,
-                      height: 28,
+            child: GestureDetector(
+              onTap: () {
+                // Navigate to the respective page when tapped
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AddMoney()),
+                );
+              },
+              child: Container(
+                height: 45,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Image.asset(
+                        'images/Frame 9.png',
+                        width: 28,
+                        height: 28,
+                      ),
                     ),
-                  ),
-                  SizedBox(width: 5),
-                  RichText(
-                    text: TextSpan(
-                      style: DefaultTextStyle.of(context).style,
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: 'Amazon Pay',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
+                    SizedBox(width: 5),
+                    RichText(
+                      text: TextSpan(
+                        style: DefaultTextStyle.of(context).style,
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: 'Amazon Pay',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        TextSpan(
-                          text:
-                              '                              ', // Add space between texts
-                        ),
-                        TextSpan(
-                          text: 'Link account', // Combine both texts
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey[600],
+                          TextSpan(
+                            text:
+                                '                              ', // Add space between texts
                           ),
-                        ),
-                      ],
+                          TextSpan(
+                            text: 'Link account', // Combine both texts
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey[600],
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                // Navigate to the respective page
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LinkAccountPage()),
+                                );
+                              },
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
@@ -379,51 +411,69 @@ class MyBody extends StatelessWidget {
             top: 440, // Adjust the top position as needed
             left: 20,
             right: 20,
-            child: Container(
-              height: 45,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(25),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image.asset(
-                      'images/Frame 10.png',
-                      width: 28,
-                      height: 28,
+            child: GestureDetector(
+              onTap: () {
+                // Navigate to the respective page when tapped
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AddMoney()),
+                );
+              },
+              child: Container(
+                height: 45,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Image.asset(
+                        'images/Frame 10.png',
+                        width: 28,
+                        height: 28,
+                      ),
                     ),
-                  ),
-                  SizedBox(width: 5),
-                  RichText(
-                    text: TextSpan(
-                      style: DefaultTextStyle.of(context).style,
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: 'Mobikwik',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
+                    SizedBox(width: 5),
+                    RichText(
+                      text: TextSpan(
+                        style: DefaultTextStyle.of(context).style,
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: 'Mobikwik',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        TextSpan(
-                          text:
-                              '                                    ', // Add space between texts
-                        ),
-                        TextSpan(
-                          text: 'Link account', // Combine both texts
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey[600],
+                          TextSpan(
+                            text:
+                                '                                    ', // Add space between texts
                           ),
-                        ),
-                      ],
+                          TextSpan(
+                            text: 'Link account', // Combine both texts
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey[600],
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                // Navigate to the respective page
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LinkAccountPage()),
+                                );
+                              },
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
@@ -431,51 +481,69 @@ class MyBody extends StatelessWidget {
             top: 500, // Adjust the top position as needed
             left: 20,
             right: 20,
-            child: Container(
-              height: 45,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(25),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image.asset(
-                      'images/Frame 11.png',
-                      width: 28,
-                      height: 28,
+            child: GestureDetector(
+              onTap: () {
+                // Navigate to the respective page when tapped
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AddMoney()),
+                );
+              },
+              child: Container(
+                height: 45,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Image.asset(
+                        'images/Frame 11.png',
+                        width: 28,
+                        height: 28,
+                      ),
                     ),
-                  ),
-                  SizedBox(width: 5),
-                  RichText(
-                    text: TextSpan(
-                      style: DefaultTextStyle.of(context).style,
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: 'Paytm',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
+                    SizedBox(width: 5),
+                    RichText(
+                      text: TextSpan(
+                        style: DefaultTextStyle.of(context).style,
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: 'Paytm',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        TextSpan(
-                          text:
-                              '                                          ', // Add space between texts
-                        ),
-                        TextSpan(
-                          text: 'Link account', // Combine both texts
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey[600],
+                          TextSpan(
+                            text:
+                                '                                          ', // Add space between texts
                           ),
-                        ),
-                      ],
+                          TextSpan(
+                            text: 'Link account', // Combine both texts
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey[600],
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                // Navigate to the respective page
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LinkAccountPage()),
+                                );
+                              },
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
@@ -485,13 +553,19 @@ class MyBody extends StatelessWidget {
   }
 }
 
-class SecondPage extends StatelessWidget {
+class LinkAccountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF240046),
+      backgroundColor: Colors.white, // Example background color
       appBar: AppBar(
-        title: Text('Add Money'),
+        title: Text('Link Account'),
+      ),
+      body: Center(
+        child: Text(
+          'Link your account here.', // Example content
+          style: TextStyle(fontSize: 24.0),
+        ),
       ),
     );
   }

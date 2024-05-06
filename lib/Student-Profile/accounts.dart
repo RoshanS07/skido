@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'my_profile.dart';
+import 'dart:ui';
 
 class Account extends StatelessWidget {
   const Account({Key? key}) : super(key: key);
@@ -268,76 +269,84 @@ class AccountsPage extends StatelessWidget {
   void _show(BuildContext ctx) {
     showModalBottomSheet(
       elevation: 10,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent, // Make background transparent
       context: ctx,
-      builder: (ctx) => Container(
-        width: double.infinity,
-        height: 300,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(0),
-            bottomRight: Radius.circular(0),
-            topLeft: Radius.circular(15),
-            topRight: Radius.circular(15),
+      builder: (ctx) => Positioned.fill(
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+          child: Container(
+            color: Colors.black.withOpacity(0.5),
+            child: Container(
+              width: double.infinity,
+              height: 300,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(0),
+                  bottomRight: Radius.circular(0),
+                  topLeft: Radius.circular(15),
+                  topRight: Radius.circular(15),
+                ),
+              ),
+              child: Column(
+                children: [
+                  SizedBox(
+                    width: 29,
+                    child: Divider(thickness: 6, color: Colors.grey),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'Are you sure you want to permanently \ndelete your account?\n*This action is irreversible,all your data,\nincluding courses and progress,will be\nlost.',
+                      style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 19,
+                        letterSpacing: 0,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: 385,
+                    height: 50,
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text('DELETE ACCOUNT'),
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor: Color(0xFF240046),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                        textStyle: TextStyle(color: Colors.white, fontSize: 18),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: 385,
+                    height: 50,
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text('CANCEL'),
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor:
+                            Color(0xFF240046), // Use backgroundColor instead
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                        textStyle: TextStyle(color: Colors.white, fontSize: 18),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-        ),
-        child: Column(
-          children: [
-            SizedBox(
-              width: 29,
-              child: Divider(thickness: 6, color: Colors.grey),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'Are you sure you want to permanently \ndelete your account?\n*This action is irreversible,all your data,\nincluding courses and progress,will be\nlost.',
-                style: TextStyle(
-                  fontFamily: 'Inter',
-                  fontSize: 19,
-                  letterSpacing: 0,
-                  fontWeight: FontWeight.w800,
-                ),
-              ),
-            ),
-            Container(
-              width: 385,
-              height: 50,
-              padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-              child: ElevatedButton(
-                onPressed: () {},
-                child: Text('DELETE ACCOUNT'),
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: Color(0xFF240046),
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                  textStyle: TextStyle(color: Colors.white, fontSize: 18),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              width: 385,
-              height: 50,
-              padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-              child: ElevatedButton(
-                onPressed: () {},
-                child: Text('CANCEL'),
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor:
-                      Color(0xFF240046), // Use backgroundColor instead
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                  textStyle: TextStyle(color: Colors.white, fontSize: 18),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-              ),
-            ),
-          ],
         ),
       ),
     );
@@ -348,73 +357,81 @@ class AccountsPage extends StatelessWidget {
       elevation: 10,
       backgroundColor: Colors.white,
       context: ctx,
-      builder: (ctx) => Container(
-        width: double.infinity,
-        height: 300,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(0),
-            bottomRight: Radius.circular(0),
-            topLeft: Radius.circular(15),
-            topRight: Radius.circular(15),
+      builder: (ctx) => Positioned.fill(
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+          child: Container(
+            color: Colors.black.withOpacity(0.5),
+            child: Container(
+              width: double.infinity,
+              height: 300,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(0),
+                  bottomRight: Radius.circular(0),
+                  topLeft: Radius.circular(15),
+                  topRight: Radius.circular(15),
+                ),
+              ),
+              child: Column(
+                children: [
+                  SizedBox(
+                    width: 29,
+                    child: Divider(thickness: 6, color: Colors.grey),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      '   Are you sure you want to deactivate  your   \n   account temporarily?   \n  *This will hide your profile and data until\n   you reactivate it.',
+                      style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 19,
+                        letterSpacing: 0,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: 385,
+                    height: 50,
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text('DEACTIVATE ACCOUNT'),
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor: Color(0xFF240046),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                        textStyle: TextStyle(color: Colors.white, fontSize: 18),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: 385,
+                    height: 50,
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text('CANCEL'),
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor: Color(0xFF240046),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                        textStyle: TextStyle(color: Colors.white, fontSize: 18),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-        ),
-        child: Column(
-          children: [
-            SizedBox(
-              width: 29,
-              child: Divider(thickness: 6, color: Colors.grey),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                '   Are you sure you want to deactivate  your   \n   account temporarily?   \n  *This will hide your profile and data untill\n   you reactivate it.',
-                style: TextStyle(
-                  fontFamily: 'Inter',
-                  fontSize: 19,
-                  letterSpacing: 0,
-                  fontWeight: FontWeight.w800,
-                ),
-              ),
-            ),
-            Container(
-              width: 385,
-              height: 50,
-              padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-              child: ElevatedButton(
-                onPressed: () {},
-                child: Text('DEACTIVATE ACCOUNT'),
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: Color(0xFF240046),
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                  textStyle: TextStyle(color: Colors.white, fontSize: 18),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              width: 385,
-              height: 50,
-              padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-              child: ElevatedButton(
-                onPressed: () {},
-                child: Text('CANCEL'),
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: Color(0xFF240046),
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                  textStyle: TextStyle(color: Colors.white, fontSize: 18),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-              ),
-            ),
-          ],
         ),
       ),
     );

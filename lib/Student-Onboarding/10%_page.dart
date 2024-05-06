@@ -1,29 +1,41 @@
 import 'package:flutter/material.dart';
 import '15%_page.dart';
+import '5%_page.dart';
 
 class TenPercent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        resizeToAvoidBottomInset: false,
-        backgroundColor: Color(0xFF240046),
-        body: SafeArea(
-          child: Stack(
-            children: [
-              Positioned(
-                top: 10,
-                left: 10, // Adjust this value to position the image as needed
-                child: Image.asset(
-                  'images/SKIDO Logo transparant 1-1.png',
-                  width: 100,
-                  height: 50,
+      home: WillPopScope(
+        onWillPop: () async {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (content) => FivePercent(),
+            ),
+          );
+          return true; // Return true to allow back navigation, or false to prevent it
+        },
+        child: Scaffold(
+          resizeToAvoidBottomInset: false,
+          backgroundColor: Color(0xFF240046),
+          body: SafeArea(
+            child: Stack(
+              children: [
+                Positioned(
+                  top: 10,
+                  left: 10, // Adjust this value to position the image as needed
+                  child: Image.asset(
+                    'images/SKIDO Logo transparant 1-1.png',
+                    width: 100,
+                    height: 50,
+                  ),
                 ),
-              ),
-              Center(
-                child: MyForm(),
-              ),
-            ],
+                Center(
+                  child: MyForm(),
+                ),
+              ],
+            ),
           ),
         ),
       ),

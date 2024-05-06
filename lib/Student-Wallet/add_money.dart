@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'payment_options.dart';
+import 'package:skido/Student-Wallet/payment_options.dart';
+import 'package:skido/Student-Wallet/skido_wallet.dart';
 
 class AddMoney extends StatefulWidget {
   @override
@@ -7,6 +8,17 @@ class AddMoney extends StatefulWidget {
 }
 
 class _MyAppState extends State<AddMoney> {
+  bool ispressed = false;
+  bool ispressed100 = false;
+  bool ispressed200 = false;
+  bool ispressed500 = false;
+  bool ispressed1000 = false;
+  bool ispressed2000 = false;
+  bool ispressed4000 = false;
+  bool ispressed5000 = false;
+  bool ispressed7000 = false;
+  bool ispressed10000 = false;
+  bool ispressedpay = false;
   String textholder = 'Amount';
   // To store user-entered options
   void clickFunction50() {
@@ -94,7 +106,10 @@ class _MyAppState extends State<AddMoney> {
               size: 26,
             ),
             onPressed: () {
-              // Implement back button functionality here
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SikdoWallet()),
+              );
             },
           ),
         ),
@@ -364,15 +379,22 @@ class _MyAppState extends State<AddMoney> {
                                                 child: ElevatedButton(
                                                   onPressed: () {
                                                     clickFunction50();
+                                                    setState(() {
+                                                      ispressed = !ispressed;
+                                                      ispressedpay = true;
+                                                    });
                                                   },
                                                   child: Text('50'),
                                                   style:
                                                       ElevatedButton.styleFrom(
-                                                    backgroundColor:
-                                                        Color.fromARGB(
+                                                    backgroundColor: ispressed
+                                                        ? Colors.white
+                                                        : Color.fromARGB(
                                                             128, 255, 255, 255),
-                                                    foregroundColor: Colors
-                                                        .white, // Background color
+                                                    foregroundColor: ispressed
+                                                        ? Color(0xFF240046)
+                                                        : Colors
+                                                            .white, // Background color
 
                                                     textStyle: TextStyle(
                                                       fontFamily: 'Inter',
@@ -404,15 +426,27 @@ class _MyAppState extends State<AddMoney> {
                                                 child: ElevatedButton(
                                                   onPressed: () {
                                                     clickFunction100();
+                                                    setState(() {
+                                                      ispressed100 =
+                                                          !ispressed100;
+                                                      ispressedpay = true;
+                                                    });
                                                   },
                                                   child: Text('100'),
                                                   style:
                                                       ElevatedButton.styleFrom(
                                                     backgroundColor:
-                                                        Color.fromARGB(
-                                                            128, 255, 255, 255),
-                                                    foregroundColor: Colors
-                                                        .white, // Background color
+                                                        ispressed100
+                                                            ? Colors.white
+                                                            : Color.fromARGB(
+                                                                128,
+                                                                255,
+                                                                255,
+                                                                255),
+                                                    foregroundColor: ispressed100
+                                                        ? Color(0xFF240046)
+                                                        : Colors
+                                                            .white, // Background color
 
                                                     textStyle: TextStyle(
                                                       fontFamily: 'Inter',
@@ -458,10 +492,13 @@ class _MyAppState extends State<AddMoney> {
                                     width: 160,
                                     child: ElevatedButton(
                                       style: ElevatedButton.styleFrom(
-                                        backgroundColor:
-                                            Color.fromARGB(128, 255, 255, 255),
-                                        foregroundColor:
-                                            Colors.white, // Background color
+                                        backgroundColor: ispressed200
+                                            ? Colors.white
+                                            : Color.fromARGB(
+                                                128, 255, 255, 255),
+                                        foregroundColor: ispressed200
+                                            ? Color(0xFF240046)
+                                            : Colors.white, // Background color
                                         textStyle: TextStyle(
                                           fontFamily: 'Inter',
                                           fontSize: 18,
@@ -481,6 +518,10 @@ class _MyAppState extends State<AddMoney> {
                                       ),
                                       onPressed: () {
                                         clickFunction200();
+                                        setState(() {
+                                          ispressed200 = !ispressed200;
+                                          ispressedpay = true;
+                                        });
                                       },
                                       child: Row(
                                           mainAxisSize: MainAxisSize.min,
@@ -514,10 +555,13 @@ class _MyAppState extends State<AddMoney> {
                                     width: 160,
                                     child: ElevatedButton(
                                       style: ElevatedButton.styleFrom(
-                                        backgroundColor:
-                                            Color.fromARGB(128, 255, 255, 255),
-                                        foregroundColor:
-                                            Colors.white, // Background color
+                                        backgroundColor: ispressed500
+                                            ? Colors.white
+                                            : Color.fromARGB(
+                                                128, 255, 255, 255),
+                                        foregroundColor: ispressed500
+                                            ? Color(0xFF240046)
+                                            : Colors.white, // Background color
                                         textStyle: TextStyle(
                                           fontFamily: 'Inter',
                                           fontSize: 18,
@@ -537,6 +581,10 @@ class _MyAppState extends State<AddMoney> {
                                       ),
                                       onPressed: () {
                                         clickFunction500();
+                                        setState(() {
+                                          ispressed500 = !ispressed500;
+                                          ispressedpay = true;
+                                        });
                                       },
                                       child: Row(
                                           mainAxisSize: MainAxisSize.min,
@@ -579,10 +627,13 @@ class _MyAppState extends State<AddMoney> {
                                     width: 160,
                                     child: ElevatedButton(
                                       style: ElevatedButton.styleFrom(
-                                        backgroundColor:
-                                            Color.fromARGB(128, 255, 255, 255),
-                                        foregroundColor:
-                                            Colors.white, // Background color
+                                        backgroundColor: ispressed1000
+                                            ? Colors.white
+                                            : Color.fromARGB(
+                                                128, 255, 255, 255),
+                                        foregroundColor: ispressed1000
+                                            ? Color(0xFF240046)
+                                            : Colors.white, // Background color
                                         textStyle: TextStyle(
                                           fontFamily: 'Inter',
                                           fontSize: 18,
@@ -602,6 +653,10 @@ class _MyAppState extends State<AddMoney> {
                                       ),
                                       onPressed: () {
                                         clickFunction1000();
+                                        setState(() {
+                                          ispressed1000 = !ispressed1000;
+                                          ispressedpay = true;
+                                        });
                                       },
                                       child: Row(
                                           mainAxisSize: MainAxisSize.min,
@@ -636,13 +691,20 @@ class _MyAppState extends State<AddMoney> {
                                     child: ElevatedButton(
                                       onPressed: () {
                                         clickFunction2000();
+                                        setState(() {
+                                          ispressed2000 = !ispressed2000;
+                                          ispressedpay = true;
+                                        });
                                       },
                                       child: Text('2000'),
                                       style: ElevatedButton.styleFrom(
-                                        backgroundColor:
-                                            Color.fromARGB(128, 255, 255, 255),
-                                        foregroundColor:
-                                            Colors.white, // Background color
+                                        backgroundColor: ispressed2000
+                                            ? Colors.white
+                                            : Color.fromARGB(
+                                                128, 255, 255, 255),
+                                        foregroundColor: ispressed2000
+                                            ? Color(0xFF240046)
+                                            : Colors.white, // Background color
 
                                         textStyle: TextStyle(
                                           fontFamily: 'Inter',
@@ -680,13 +742,20 @@ class _MyAppState extends State<AddMoney> {
                                     child: ElevatedButton(
                                       onPressed: () {
                                         clickFunction4000();
+                                        setState(() {
+                                          ispressed4000 = !ispressed4000;
+                                          ispressedpay = true;
+                                        });
                                       },
                                       child: Text('4000'),
                                       style: ElevatedButton.styleFrom(
-                                        backgroundColor:
-                                            Color.fromARGB(128, 255, 255, 255),
-                                        foregroundColor:
-                                            Colors.white, // Background color
+                                        backgroundColor: ispressed4000
+                                            ? Colors.white
+                                            : Color.fromARGB(
+                                                128, 255, 255, 255),
+                                        foregroundColor: ispressed4000
+                                            ? Color(0xFF240046)
+                                            : Colors.white, // Background color
 
                                         textStyle: TextStyle(
                                           fontFamily: 'Inter',
@@ -715,13 +784,20 @@ class _MyAppState extends State<AddMoney> {
                                     child: ElevatedButton(
                                       onPressed: () {
                                         clickFunction5000();
+                                        setState(() {
+                                          ispressed5000 = !ispressed5000;
+                                          ispressedpay = true;
+                                        });
                                       },
                                       child: Text('5000'),
                                       style: ElevatedButton.styleFrom(
-                                        backgroundColor:
-                                            Color.fromARGB(128, 255, 255, 255),
-                                        foregroundColor:
-                                            Colors.white, // Background color
+                                        backgroundColor: ispressed5000
+                                            ? Colors.white
+                                            : Color.fromARGB(
+                                                128, 255, 255, 255),
+                                        foregroundColor: ispressed5000
+                                            ? Color(0xFF240046)
+                                            : Colors.white, // Background color
 
                                         textStyle: TextStyle(
                                           fontFamily: 'Inter',
@@ -759,13 +835,20 @@ class _MyAppState extends State<AddMoney> {
                                     child: ElevatedButton(
                                       onPressed: () {
                                         clickFunction7000();
+                                        setState(() {
+                                          ispressed7000 = !ispressed7000;
+                                          ispressedpay = true;
+                                        });
                                       },
                                       child: Text('7000'),
                                       style: ElevatedButton.styleFrom(
-                                        backgroundColor:
-                                            Color.fromARGB(128, 255, 255, 255),
-                                        foregroundColor:
-                                            Colors.white, // Background color
+                                        backgroundColor: ispressed7000
+                                            ? Colors.white
+                                            : Color.fromARGB(
+                                                128, 255, 255, 255),
+                                        foregroundColor: ispressed7000
+                                            ? Color(0xFF240046)
+                                            : Colors.white, // Background color
 
                                         textStyle: TextStyle(
                                           fontFamily: 'Inter',
@@ -794,13 +877,20 @@ class _MyAppState extends State<AddMoney> {
                                     child: ElevatedButton(
                                       onPressed: () {
                                         clickFunction10000();
+                                        setState(() {
+                                          ispressed10000 = !ispressed10000;
+                                          ispressedpay = true;
+                                        });
                                       },
                                       child: Text('10000'),
                                       style: ElevatedButton.styleFrom(
-                                        backgroundColor:
-                                            Color.fromARGB(128, 255, 255, 255),
-                                        foregroundColor:
-                                            Colors.white, // Background color
+                                        backgroundColor: ispressed10000
+                                            ? Colors.white
+                                            : Color.fromARGB(
+                                                128, 255, 255, 255),
+                                        foregroundColor: ispressed10000
+                                            ? Color(0xFF240046)
+                                            : Colors.white, // Background color
 
                                         textStyle: TextStyle(
                                           fontFamily: 'Inter',
@@ -889,14 +979,19 @@ class _MyAppState extends State<AddMoney> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  PaymentOptions()), // Instantiating PaymentOptions directly
+                                                  PaymentOptions()),
                                         );
                                       },
                                       child: Text('Proceed To Add Money'),
                                       style: ElevatedButton.styleFrom(
-                                        foregroundColor:
-                                            Colors.white, // Text color
-                                        backgroundColor: Colors.transparent,
+                                        backgroundColor: ispressedpay
+                                            ? Colors.white
+                                            : Color.fromARGB(
+                                                128, 255, 255, 255),
+                                        foregroundColor: ispressedpay
+                                            ? Color(0xFF240046)
+                                            : Colors.white,
+
                                         textStyle: TextStyle(
                                           fontFamily: 'Inter',
                                           fontSize: 18,

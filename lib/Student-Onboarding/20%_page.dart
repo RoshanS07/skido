@@ -24,8 +24,27 @@ class MyForm extends StatefulWidget {
 }
 
 class _MyFormState extends State<MyForm> {
-  TextEditingController _controller = TextEditingController();
-  String inputName = '';
+  List<TextEditingController> _controllers = List.generate(
+    6,
+    (index) => TextEditingController(),
+  );
+
+  bool isTextEntered = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _controllers.forEach((controller) {
+      controller.addListener(_textFieldListener);
+    });
+  }
+
+  void _textFieldListener() {
+    setState(() {
+      isTextEntered =
+          _controllers.every((controller) => controller.text.isNotEmpty);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +108,20 @@ class _MyFormState extends State<MyForm> {
                         ),
                         child: Center(
                           child: TextField(
+                            controller: _controllers[index],
+                            onChanged: (value) {
+                              setState(() {
+                                isTextEntered = value.isNotEmpty;
+                              });
+                              if (value.isNotEmpty && value.length == 1) {
+                                // Move focus to the next TextField
+                                if (index < 5) {
+                                  FocusScope.of(context).nextFocus();
+                                } else {
+                                  // Focus on last field, submit or do something else
+                                }
+                              }
+                            },
                             keyboardType: TextInputType.number,
                             maxLength: 1,
                             textAlign: TextAlign.center,
@@ -209,14 +242,16 @@ class _MyFormState extends State<MyForm> {
                             child: Padding(
                               padding: EdgeInsets.symmetric(horizontal: 13.0),
                               child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (content) => TwentyFivePercent(),
-                                    ),
-                                  );
-                                },
+                                onPressed: isTextEntered
+                                    ? () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (content) =>
+                                                  TwentyFivePercent()),
+                                        );
+                                      }
+                                    : null,
                                 style: ButtonStyle(
                                   backgroundColor:
                                       MaterialStateProperty.resolveWith<Color>(
@@ -229,8 +264,9 @@ class _MyFormState extends State<MyForm> {
                                     },
                                   ),
                                   padding: MaterialStateProperty.all<
-                                          EdgeInsetsGeometry>(
-                                      EdgeInsets.symmetric(vertical: 13.0)),
+                                      EdgeInsetsGeometry>(
+                                    EdgeInsets.symmetric(vertical: 13.0),
+                                  ),
                                 ),
                                 child: Text(
                                   'Next',
