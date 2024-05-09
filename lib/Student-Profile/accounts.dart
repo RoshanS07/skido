@@ -329,7 +329,9 @@ class AccountsPage extends StatelessWidget {
                     height: 50,
                     padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pop(ctx);
+                      },
                       child: Text('CANCEL'),
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white,
@@ -415,7 +417,9 @@ class AccountsPage extends StatelessWidget {
                     height: 50,
                     padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pop(ctx);
+                      },
                       child: Text('CANCEL'),
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white,

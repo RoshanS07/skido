@@ -68,7 +68,7 @@ class ThirtyFivePercent extends StatelessWidget {
                           radius: 90, // Increase the radius here
                           backgroundColor: Color(0xFF240046),
                           backgroundImage: AssetImage(
-                              'images/profile.jpg'), // Change 'your_image.jpg' to the actual path of your image
+                              'images/p.png'), // Change 'your_image.jpg' to the actual path of your image
                           child: Container(
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,

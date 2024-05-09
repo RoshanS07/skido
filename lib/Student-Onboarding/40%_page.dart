@@ -24,19 +24,27 @@ class YourWidget extends StatefulWidget {
 }
 
 class _YourWidgetState extends State<YourWidget> {
-  TextEditingController _controller = TextEditingController();
+  TextEditingController _dayController = TextEditingController();
+  TextEditingController _monthController = TextEditingController();
+  TextEditingController _yearController = TextEditingController();
 
-  bool isTextEntered = false;
+  bool isDayEntered = false;
+  bool isMonthEntered = false;
+  bool isYearEntered = false;
 
   @override
   void initState() {
     super.initState();
-    _controller.addListener(_textFieldListener);
+    _dayController.addListener(_textFieldListener);
+    _monthController.addListener(_textFieldListener);
+    _yearController.addListener(_textFieldListener);
   }
 
   void _textFieldListener() {
     setState(() {
-      isTextEntered = _controller.text.isNotEmpty;
+      isDayEntered = _dayController.text.isNotEmpty;
+      isMonthEntered = _monthController.text.isNotEmpty;
+      isYearEntered = _yearController.text.isNotEmpty;
     });
   }
 
@@ -86,13 +94,7 @@ class _YourWidgetState extends State<YourWidget> {
                                 padding: EdgeInsets.symmetric(horizontal: 10.0),
                                 child: RectangleWidget(
                                   child: TextField(
-                                    controller:
-                                        _controller, // Add controller for the first text field
-                                    onChanged: (value) {
-                                      setState(() {
-                                        isTextEntered = value.isNotEmpty;
-                                      });
-                                    },
+                                    controller: _dayController,
                                     keyboardType: TextInputType.number,
                                     style: TextStyle(color: Colors.white),
                                     decoration: InputDecoration(
@@ -122,13 +124,7 @@ class _YourWidgetState extends State<YourWidget> {
                                 padding: EdgeInsets.symmetric(horizontal: 10.0),
                                 child: RectangleWidget(
                                   child: TextField(
-                                    controller:
-                                        _controller, // Add controller for the second text field
-                                    onChanged: (value) {
-                                      setState(() {
-                                        isTextEntered = value.isNotEmpty;
-                                      });
-                                    },
+                                    controller: _monthController,
                                     keyboardType: TextInputType.number,
                                     style: TextStyle(color: Colors.white),
                                     decoration: InputDecoration(
@@ -136,7 +132,7 @@ class _YourWidgetState extends State<YourWidget> {
                                           TextStyle(color: Colors.white),
                                       border: InputBorder.none,
                                       contentPadding: EdgeInsets.symmetric(
-                                          horizontal: 45.0, vertical: 15.0),
+                                          horizontal: 42.0, vertical: 15.0),
                                     ),
                                   ),
                                 ),
@@ -158,21 +154,15 @@ class _YourWidgetState extends State<YourWidget> {
                                 padding: EdgeInsets.symmetric(horizontal: 10.0),
                                 child: RectangleWidget(
                                   child: TextField(
-                                    controller:
-                                        _controller, // Add controller for the third text field
-                                    onChanged: (value) {
-                                      setState(() {
-                                        isTextEntered = value.isNotEmpty;
-                                      });
-                                    },
-                                    keyboardType: TextInputType.number,
+                                    controller: _yearController,
+                                    keyboardType: TextInputType.phone,
                                     style: TextStyle(color: Colors.white),
                                     decoration: InputDecoration(
                                       labelStyle:
                                           TextStyle(color: Colors.white),
                                       border: InputBorder.none,
                                       contentPadding: EdgeInsets.symmetric(
-                                          horizontal: 35.0, vertical: 15.0),
+                                          horizontal: 33.0, vertical: 15.0),
                                     ),
                                   ),
                                 ),
@@ -213,8 +203,7 @@ class _YourWidgetState extends State<YourWidget> {
                                 ),
                                 FractionallySizedBox(
                                   alignment: Alignment.centerLeft,
-                                  widthFactor:
-                                      0.4, // Change this value to adjust the progress
+                                  widthFactor: 0.4,
                                   child: Container(
                                     height: 5,
                                     decoration: BoxDecoration(
@@ -230,10 +219,8 @@ class _YourWidgetState extends State<YourWidget> {
                           Expanded(
                             flex: 1,
                             child: Text(
-                              '40%', // Update this with the progress percentage
-                              style: TextStyle(
-                                color: Colors.white,
-                              ),
+                              '40%',
+                              style: TextStyle(color: Colors.white),
                             ),
                           ),
                         ],
@@ -247,14 +234,18 @@ class _YourWidgetState extends State<YourWidget> {
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 13.0),
                             child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => FortyFivePercent(),
-                                  ),
-                                );
-                              },
+                              onPressed: isDayEntered &&
+                                      isMonthEntered &&
+                                      isYearEntered
+                                  ? () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (content) =>
+                                                FortyFivePercent()),
+                                      );
+                                    }
+                                  : null,
                               style: ButtonStyle(
                                 backgroundColor:
                                     MaterialStateProperty.resolveWith<Color>(
@@ -267,15 +258,14 @@ class _YourWidgetState extends State<YourWidget> {
                                   },
                                 ),
                                 padding: MaterialStateProperty.all<
-                                        EdgeInsetsGeometry>(
-                                    EdgeInsets.symmetric(vertical: 13.0)),
+                                    EdgeInsetsGeometry>(
+                                  EdgeInsets.symmetric(vertical: 13.0),
+                                ),
                               ),
                               child: Text(
                                 'Next',
                                 style: TextStyle(
-                                  fontSize: 18.0,
-                                  color: Color(0xFF240046),
-                                ),
+                                    fontSize: 18.0, color: Color(0xFF240046)),
                               ),
                             ),
                           ),
@@ -314,15 +304,15 @@ class RectangleWidget extends StatelessWidget {
           ],
         ),
         border: Border.all(
-          color: Color(0xFFC0C0C0), // White outline color
-          width: 1, // Width of the outline
+          color: Color(0xFFC0C0C0),
+          width: 1,
         ),
         boxShadow: [
           BoxShadow(
-            color: Color(0x80000000), // Vintage shade color with 50% opacity
+            color: Color(0x80000000),
             spreadRadius: 2,
             blurRadius: 4,
-            offset: Offset(0, 2), // Shadow position
+            offset: Offset(0, 2),
           ),
         ],
       ),

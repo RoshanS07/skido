@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skido/Student-Wallet/skido_wallet.dart';
 
-void main() {
-  runApp(WalletHistory());
-}
-
 class WalletHistory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

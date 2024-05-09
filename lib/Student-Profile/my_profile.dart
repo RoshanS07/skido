@@ -346,7 +346,7 @@ class MyProfile extends StatelessWidget {
                         child: Row(
                           children: [
                             Image(
-                              image: AssetImage('images/wallet.png'),
+                              image: AssetImage('images/wallet1.png'),
                               width: 25,
                               height: 25,
                             ),

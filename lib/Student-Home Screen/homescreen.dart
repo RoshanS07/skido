@@ -1,3 +1,4 @@
+import 'homescreensidesheet.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -22,44 +23,41 @@ class MyPage extends StatefulWidget {
 class _MyPageState extends State<MyPage> {
   int _currentPage = 0;
   int _selectedIndex = 0;
+  double _kk = 0;
+  double _kp = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF240046),
-      appBar: AppBar(
-        backgroundColor: Color(0xFF240046),
-        title: Row(
-          children: [
-            SizedBox(height: 20),
-            Expanded(
-              child: Align(
-                alignment: Alignment.center,
-                child: Image.asset(
-                  'assets/SKIDO Logo transparant 1-1.png',
-                  height: 35,
-                  width: 81,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.only(left: 1, right: 10, top: 65),
+              child: Image.asset(
+                'images/SKIDO Logo transparant 2.png',
+                width: 81,
+                height: 35,
+                fit: BoxFit.fill,
+              ),
+            ),
+
+            SizedBox(height: 0),
             Padding(
               padding: const EdgeInsets.only(left: 1, right: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(width: 10),
+                  SizedBox(width: 0),
                   SizedBox(
                     width: 50,
                     child: IconButton(
                       onPressed: () {
-                        // Handle menu icon pressed
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => maindrawer()));
                       },
                       icon: Icon(Icons.menu, color: Colors.white),
                     ),
@@ -71,13 +69,11 @@ class _MyPageState extends State<MyPage> {
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                   ),
-                  SizedBox(width: 70),
+                  SizedBox(width: 60),
                   SizedBox(
                     width: 50,
                     child: IconButton(
-                      onPressed: () {
-                        // Handle notification icon pressed
-                      },
+                      onPressed: () {},
                       icon: Icon(Icons.notifications, color: Colors.white),
                     ),
                   ),
@@ -159,7 +155,7 @@ class _MyPageState extends State<MyPage> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 10),
+                        padding: const EdgeInsets.only(left: 1),
                         child: Container(
                           height: 60,
                           decoration: BoxDecoration(
@@ -186,10 +182,10 @@ class _MyPageState extends State<MyPage> {
                             ],
                           ),
                           child: SizedBox(
-                            width: 45,
+                            width: 50,
                             height: 50,
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () => _anotherButtonPressed(context),
                               style: ElevatedButton.styleFrom(
                                 padding: EdgeInsets.zero,
                                 shape: RoundedRectangleBorder(
@@ -198,8 +194,8 @@ class _MyPageState extends State<MyPage> {
                                 elevation: 4,
                                 backgroundColor: Colors.transparent,
                               ),
-                              child: Icon(Icons.format_list_bulleted_rounded,
-                                  color: Colors.white),
+                              child:
+                                  Icon(Icons.filter_list, color: Colors.white),
                             ),
                           ),
                         ),
@@ -229,7 +225,7 @@ class _MyPageState extends State<MyPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: List<Widget>.generate(13, (int index) {
                 return Container(
-                  width: 26.0,
+                  width: 24.0,
                   height: 3.0,
                   margin: EdgeInsets.symmetric(horizontal: 2.0),
                   decoration: BoxDecoration(
@@ -283,16 +279,16 @@ class _MyPageState extends State<MyPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SizedBox(height: 1),
-                      _buildMentorProfile('assets/profile1.png'),
+                      _buildMentorProfile('images/p.png'),
                       SizedBox(height: 1),
                       SizedBox(width: 20), // Add space between images
-                      _buildMentorProfile('assets/profile2.png'),
+                      _buildMentorProfile('images/p.png'),
                       SizedBox(height: 1),
                       SizedBox(width: 20), // Add space between images
-                      _buildMentorProfile('assets/profile3.png'),
+                      _buildMentorProfile('images/p.png'),
                       SizedBox(width: 20), // Add space between images
                       SizedBox(height: 1),
-                      _buildMentorProfile('assets/profile4.png'),
+                      _buildMentorProfile('images/p.png'),
                     ],
                   ),
                 ],
@@ -390,7 +386,7 @@ class _MyPageState extends State<MyPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
-                      width: 100,
+                      width: 80,
                       height: 100,
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -465,7 +461,7 @@ class _MyPageState extends State<MyPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
-                      width: 100,
+                      width: 80,
                       height: 100,
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -589,7 +585,7 @@ class _MyPageState extends State<MyPage> {
         Stack(
           children: [
             Container(
-              width: 79,
+              width: 69,
               height: 60,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
@@ -664,6 +660,414 @@ class _MyPageState extends State<MyPage> {
         ),
       ],
     );
+  }
+
+  void _anotherButtonPressed(BuildContext ctx) {
+    showModalBottomSheet(
+        elevation: 10,
+        backgroundColor: Colors.white,
+        context: ctx,
+        builder: (ctx) => Container(
+              width: double.infinity,
+              height: 1500,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(0),
+                  bottomRight: Radius.circular(0),
+                  topLeft: Radius.circular(15),
+                  topRight: Radius.circular(15),
+                ),
+                border: Border.all(
+                  color: Color(0xFFC0C0C0),
+                  width: 1,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0x80000000),
+                    spreadRadius: 2,
+                    blurRadius: 4,
+                    offset: Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: SingleChildScrollView(
+                  // Generated code for this Column Widget...
+                  child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Padding(padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0)),
+                  SizedBox(
+                    width: 25,
+                    child: Divider(
+                      height: 1,
+                      thickness: 5,
+                      color: Colors.black,
+                    ),
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(-1, -1),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(25, 40, 0, 0),
+                      child: Text(
+                        'Filter By:',
+                        style: TextStyle(
+                          fontFamily: 'inter',
+                          color: Color(0xFF240046),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 19,
+                          letterSpacing: 0,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(-1, -1),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(25, 25, 0, 0),
+                      child: Text(
+                        'Years of experiences:',
+                        style: TextStyle(
+                          fontFamily: 'inter',
+                          color: Color(0xFF240046),
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18,
+                          letterSpacing: 0,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Align(
+                        alignment: AlignmentDirectional(-1, 0),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
+                          child: SliderTheme(
+                            data: SliderThemeData(
+                              showValueIndicator: ShowValueIndicator.always,
+                            ),
+                            child: Container(
+                              width: 300,
+                              child: Slider(
+                                activeColor: Color.fromARGB(255, 221, 203, 42),
+                                inactiveColor:
+                                    Color.fromARGB(255, 146, 144, 144),
+                                min: 0,
+                                max: 40,
+                                label: _kp.round().toString(),
+                                value: _kp,
+                                onChanged: (neValue) {
+                                  setState(() {
+                                    _kp = neValue;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(7, 0, 0, 0),
+                        child: Container(
+                          width: 56,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 174, 169, 169),
+                          ),
+                          child: Align(
+                            alignment: AlignmentDirectional(0, 0),
+                            child: Text(
+                              '0-40',
+                              style: TextStyle(
+                                fontFamily: 'Inter',
+                                color: Color(0xFF240046),
+                                fontSize: 14,
+                                letterSpacing: 0,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(-1, -1),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(25, 15, 0, 0),
+                      child: Text(
+                        'Price:',
+                        style: TextStyle(
+                          fontFamily: 'inter',
+                          color: Color(0xFF240046),
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18,
+                          letterSpacing: 0,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Align(
+                        alignment: AlignmentDirectional(-1, 0),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
+                          child: Container(
+                            width: 300,
+                            child: Slider(
+                              activeColor: Color.fromARGB(255, 221, 203, 42),
+                              inactiveColor: Color.fromARGB(255, 146, 144, 144),
+                              min: 0,
+                              max: 60,
+                              value: _kk,
+                              label: _kk.round().toString(),
+                              onChanged: (newValue) {
+                                setState(() {
+                                  _kk = newValue;
+                                });
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(7, 0, 0, 0),
+                        child: Container(
+                          width: 56,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 174, 169, 169),
+                          ),
+                          child: Align(
+                            alignment: AlignmentDirectional(0, 0),
+                            child: Text(
+                              '₹0 - ₹60',
+                              style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 14,
+                                letterSpacing: 0,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(-1, 0),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(25, 20, 0, 0),
+                      child: Text(
+                        'Communities',
+                        style: TextStyle(
+                          fontFamily: 'inter',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18,
+                          letterSpacing: 0,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(20, 15, 0, 0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(2, 0, 0, 0),
+                          child: ElevatedButton(
+                            onPressed: () => (),
+                            child: const Text(
+                              'UI/UX',
+                              style: TextStyle(
+                                  color:
+                                      Colors.white), // Set text color to white
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              fixedSize: Size(170, 40),
+                              backgroundColor: Color(0xFF240046),
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
+                          child: ElevatedButton(
+                            onPressed: () => (),
+                            child: const Text(
+                              'Law',
+                              style: TextStyle(
+                                  color:
+                                      Colors.white), // Set text color to white
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color(0xFF240046),
+                              fixedSize: Size(170, 40),
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(20, 15, 0, 0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(2, 0, 0, 0),
+                          child: ElevatedButton(
+                            onPressed: () => (),
+                            child: const Text(
+                              'Panting',
+                              style: TextStyle(
+                                  color:
+                                      Colors.white), // Set text color to white
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              fixedSize: Size(170, 40),
+                              backgroundColor: Color(0xFF240046),
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
+                          child: ElevatedButton(
+                            onPressed: () => (),
+                            child: const Text(
+                              'Psychology',
+                              style: TextStyle(
+                                  color:
+                                      Colors.white), // Set text color to white
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color(0xFF240046),
+                              fixedSize: Size(170, 40),
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(20, 15, 0, 0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(2, 0, 0, 0),
+                          child: ElevatedButton(
+                            onPressed: () => (),
+                            child: const Text(
+                              'Origami',
+                              style: TextStyle(
+                                  color:
+                                      Colors.white), // Set text color to white
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              fixedSize: Size(170, 40),
+                              backgroundColor: Color(0xFF240046),
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
+                          child: ElevatedButton(
+                            onPressed: () => (),
+                            child: const Text(
+                              'Biology',
+                              style: TextStyle(
+                                  color:
+                                      Colors.white), // Set text color to white
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color(0xFF240046),
+                              fixedSize: Size(170, 40),
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(20, 15, 0, 0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(2, 0, 0, 0),
+                          child: ElevatedButton(
+                            onPressed: () => (),
+                            child: const Text(
+                              'Game design',
+                              style: TextStyle(
+                                  color:
+                                      Colors.white), // Set text color to white
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              fixedSize: Size(170, 40),
+                              backgroundColor: Color(0xFF240046),
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
+                          child: ElevatedButton(
+                            onPressed: () => (),
+                            child: const Text(
+                              'Chemistry',
+                              style: TextStyle(
+                                  color:
+                                      Colors.white), // Set text color to white
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color(0xFF240046),
+                              fixedSize: Size(170, 40),
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              )),
+            ));
   }
 
   Widget _buildRecommendedProfile(Profile profile) {
@@ -869,6 +1273,6 @@ List<Profile> profiles = [
     'Mike Jones',
     'UI / UX  |  Motion design',
     'Marketing Manager',
-    'https://th.bing.com/th/id/OIP.0iG7xinjnxYwduQCGJs1rQHaKX?w=202&h=282&c=7&r=0&o=5&dpr=1.5&pid=1.7', // Placeholder URL
+    'https://th.bing.com/th/id/OIP.0iG7xinjnxYwduQCGJs1rQHaKX?w=202&h=282&c=7&r=0&o=5&dpr=1.5&pid=1.7', // Placeholder URL
   ),
 ];

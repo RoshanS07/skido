@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:skido/Student-Wallet/wallet_history.dart';
-import 'add_money.dart';
 import 'package:flutter/gestures.dart';
+import 'package:skido/Student-Wallet/add_money.dart';
+import 'wallet_history.dart';
 
 class SikdoWallet extends StatelessWidget {
   @override
@@ -149,6 +149,7 @@ class MyBody extends StatelessWidget {
             left: 10,
             child: GestureDetector(
               onTap: () {
+                // Navigate to the second page
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => WalletHistory()),
@@ -158,7 +159,7 @@ class MyBody extends StatelessWidget {
                 children: [
                   Image(
                     image: AssetImage(
-                        'images/Rectangle 52.png'), // Replace with your image path
+                        'images/Rectangle 48.png'), // Replace with your image path
                     width: MediaQuery.of(context).size.width,
                     height: 270,
                   ),
@@ -175,7 +176,7 @@ class MyBody extends StatelessWidget {
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        SizedBox(width: 190),
+                        SizedBox(width: 185),
                         Text(
                           '+',
                           style: TextStyle(
@@ -195,12 +196,18 @@ class MyBody extends StatelessWidget {
             right: 10,
             left: 10,
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                // Navigate to the second page
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => WalletHistory()),
+                );
+              },
               child: Stack(
                 children: [
                   Image(
                     image: AssetImage(
-                        'images/Rectangle 52.png'), // Replace with your image path
+                        'images/Rectangle 48.png'), // Replace with your image path
                     width: MediaQuery.of(context).size.width,
                     height: 270,
                   ),
@@ -210,14 +217,14 @@ class MyBody extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          'Terms & Condition',
+                          'Terms & Condtion',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        SizedBox(width: 150),
+                        SizedBox(width: 155),
                         Text(
                           '+',
                           style: TextStyle(
@@ -274,10 +281,6 @@ class MyBody extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 // Navigate to the respective page when tapped
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AddMoney()),
-                );
               },
               child: Container(
                 height: 45,
@@ -344,10 +347,6 @@ class MyBody extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 // Navigate to the respective page when tapped
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AddMoney()),
-                );
               },
               child: Container(
                 height: 45,
@@ -414,10 +413,6 @@ class MyBody extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 // Navigate to the respective page when tapped
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AddMoney()),
-                );
               },
               child: Container(
                 height: 45,
@@ -484,10 +479,6 @@ class MyBody extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 // Navigate to the respective page when tapped
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AddMoney()),
-                );
               },
               child: Container(
                 height: 45,
