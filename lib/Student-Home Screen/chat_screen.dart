@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:skido/Student-Home%20Screen/chats_calls.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
+class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -52,7 +49,7 @@ class MyApp extends StatelessWidget {
               ),
               SizedBox(height: 5), // Add some space before the ChatScreen
               Expanded(
-                child: ChatScreen(), // Add the ChatScreen below the text
+                child: ChatMsg(), // Add the ChatScreen below the text
               ),
             ],
           ),
@@ -134,7 +131,10 @@ class CustomAppBar extends StatelessWidget {
           children: [
             IconButton(
               icon: Icon(Icons.arrow_back, color: Colors.black, size: 35),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ChatCalls()));
+              },
             ),
             CircleAvatar(
               radius: 25,
@@ -213,7 +213,7 @@ class CustomAppBar extends StatelessWidget {
   }
 }
 
-class ChatScreen extends StatelessWidget {
+class ChatMsg extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

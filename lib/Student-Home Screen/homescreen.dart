@@ -1,3 +1,5 @@
+import 'package:skido/Student-Home%20Screen/chats_calls.dart';
+
 import 'homescreensidesheet.dart';
 import 'package:flutter/material.dart';
 
@@ -1227,14 +1229,16 @@ class _MyPageState extends State<MyPage> {
           ),
           IconButton(
             onPressed: () {
-              // Handle icon pressed
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ChatCalls()));
             },
             icon: Icon(Icons.messenger_outline_rounded),
             color: Colors.black,
           ),
           IconButton(
             onPressed: () {
-              // Handle icon pressed
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ChatCalls()));
             },
             icon: Icon(Icons.perm_contact_calendar_sharp),
             color: Colors.black,
